@@ -8,6 +8,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5895120251177045491, guid: 3fe4536d25f2492419d8548617453c84,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7aa957e5c86ccc049bdd28c2f793c250, type: 2}
     - target: {fileID: 371223611625605085, guid: 3fe4536d25f2492419d8548617453c84,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
@@ -16,12 +21,28 @@ PrefabInstance:
     - target: {fileID: 4126328944755106262, guid: 3fe4536d25f2492419d8548617453c84,
         type: 3}
       propertyPath: m_Name
-      value: Target Base (1) Variant
+      value: Target Kitsune
+      objectReference: {fileID: 0}
+    - target: {fileID: 4978173449552570333, guid: 3fe4536d25f2492419d8548617453c84,
+        type: 3}
+      propertyPath: _targetConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: c2b1f37f333df23439d7b9e8e0cc339c,
+        type: 2}
+    - target: {fileID: 4978173449552570333, guid: 3fe4536d25f2492419d8548617453c84,
+        type: 3}
+      propertyPath: _rotateSpawnHash
+      value: RotateSpawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 4978173449552570333, guid: 3fe4536d25f2492419d8548617453c84,
+        type: 3}
+      propertyPath: _rotateDespawnHash
+      value: RotateDespawn
       objectReference: {fileID: 0}
     - target: {fileID: 5422756431796129861, guid: 3fe4536d25f2492419d8548617453c84,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.968
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5422756431796129861, guid: 3fe4536d25f2492419d8548617453c84,
         type: 3}
