@@ -11,7 +11,7 @@ public class OLD_Spawner : MonoBehaviour
     }
 
     public SpawnDirection Direction;
-    public ScoreSystem ScoreSystem;
+    public OLD_ScoreSystem ScoreSystem;
     public GameObject[] targets;
     [HideInInspector] public float minSpawnRate;
     [HideInInspector] public float maxSpawnRate;

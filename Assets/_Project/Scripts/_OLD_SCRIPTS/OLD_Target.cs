@@ -19,9 +19,9 @@ public class OLD_Target : MonoBehaviour
 
     public TargetType targetType;
     public TargetMovementType movementType;
-    public ScoreSystem scoreSystem;
+    public OLD_ScoreSystem scoreSystem;
     public OLD_Spawner spawner;
-    public TargetRotate rotator;
+    public OLD_TargetRotate rotator;
     public float speed;
     public int score;
     public int minRate;
@@ -33,7 +33,7 @@ public class OLD_Target : MonoBehaviour
     {
         if (movementType == TargetMovementType.Stationary)
         {
-            rotator = GetComponentInParent<TargetRotate>();
+            rotator = GetComponentInParent<OLD_TargetRotate>();
             scoreSystem = rotator.scoreSystem;
             rotator.rotationSpeed = speed;
             rotator.minDelayRate= minRate;
