@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5422756431796129861}
-  - component: {fileID: 4978173449552570333}
   - component: {fileID: -5895120251177045491}
+  - component: {fileID: 4978173449552570333}
   m_Layer: 0
   m_Name: Target Base
   m_TagString: Untagged
@@ -34,19 +34,6 @@ Transform:
   - {fileID: 8568956863369135165}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4978173449552570333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4126328944755106262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64cbb25657f071645a38a0295cea188b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _targetConfig: {fileID: 0}
 --- !u!95 &-5895120251177045491
 Animator:
   serializedVersion: 5
@@ -68,6 +55,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4978173449552570333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4126328944755106262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64cbb25657f071645a38a0295cea188b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NextToSpawn: {fileID: 0}
+  Spawner: {fileID: 0}
+  _targetConfig: {fileID: 0}
+  _rotateSpawnHash: 
+  _rotateDespawnHash: 
+  _minLifeTime: 5
+  _maxLifeTime: 7.5
+  _movementSpeed: 1
 --- !u!1 &4654865670535396030
 GameObject:
   m_ObjectHideFlags: 0
@@ -79,6 +86,7 @@ GameObject:
   - component: {fileID: 8568956863369135165}
   - component: {fileID: 8929733954001810865}
   - component: {fileID: 371223611625605085}
+  - component: {fileID: 6911884797797982242}
   m_Layer: 0
   m_Name: Target
   m_TagString: Untagged
@@ -152,3 +160,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6911884797797982242
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4654865670535396030}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6737642587069424543, guid: 75b64146fc24c7e489c5b193628c0fd0, type: 3}
