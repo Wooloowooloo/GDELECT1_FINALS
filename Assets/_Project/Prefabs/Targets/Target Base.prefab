@@ -67,14 +67,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64cbb25657f071645a38a0295cea188b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextToSpawn: {fileID: 0}
   Spawner: {fileID: 0}
+  TargetMoveType: 0
   _targetConfig: {fileID: 0}
   _rotateSpawnHash: 
   _rotateDespawnHash: 
   _minLifeTime: 5
   _maxLifeTime: 7.5
-  _movementSpeed: 1
+  _movementSpeed: 0.69
 --- !u!1 &4654865670535396030
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@ using System.Collections;
 
 public interface ITarget
 {
-    void OnSpawn(ESpawnerType spawnerType);
+    void OnSpawn();
     IEnumerator OnHit();
     IEnumerator NaturalDespawn();
 }

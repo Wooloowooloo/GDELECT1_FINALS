@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class OLD_Target : MonoBehaviour
 {
-    public enum TargetType
+    public enum TargetShootType
     {
         DoHit,
         DontHit
@@ -17,7 +17,7 @@ public class OLD_Target : MonoBehaviour
         Mobile
     }
 
-    public TargetType targetType;
+    public TargetShootType targetType;
     public TargetMovementType movementType;
     public OLD_ScoreSystem scoreSystem;
     public OLD_Spawner spawner;
