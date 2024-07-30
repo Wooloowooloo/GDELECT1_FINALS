@@ -114,16 +114,19 @@ public class Target : MonoBehaviour, ITarget
 
     public IEnumerator OnHit()
     {
-        _animator.Play(_rotateDespawnHash);
+        Score score = FindAnyObjectByType<Score>();
+        score.currentScore += _targetConfig.BaseScoreValue;
 
         if (_targetConfig.TargetShootType == ETargetShootType.DoShoot)
         {
-            //add score
+            Debug.Log("Yes, plus points");
         }
         else if (_targetConfig.TargetShootType == ETargetShootType.DoNotShoot)
         {
-            //deduct score
+            Debug.LogWarning("No, minus points");
         }
+
+        _animator.Play(_rotateDespawnHash);
 
         yield return new WaitForSeconds(0.25f);
 

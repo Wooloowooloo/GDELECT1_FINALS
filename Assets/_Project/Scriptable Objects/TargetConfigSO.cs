@@ -4,10 +4,10 @@ using UnityEngine;
 public class TargetConfigSO : ScriptableObject
 {
     [SerializeField] private ETargetShootType _targetShootType;
-    [SerializeField] private float _baseScoreValue;
+    [SerializeField] private int _baseScoreValue;
 
     public ETargetShootType TargetShootType { get => _targetShootType; private set => _targetShootType = value; }
-    public float BaseScoreValue { get => _baseScoreValue; private set => _baseScoreValue = value;}
+    public int BaseScoreValue { get => _baseScoreValue; private set => _baseScoreValue = value;}
 }
 
 public enum ETargetShootType
