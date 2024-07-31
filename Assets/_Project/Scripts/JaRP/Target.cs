@@ -29,8 +29,7 @@ public class Target : MonoBehaviour, ITarget
     {
         _audioSource = GetComponent<AudioSource>();
         _animator = GetComponent<Animator>();
-        //_spawnArea = GetComponentInParent<Collider>();
-        _spawnArea = Spawner.GetComponent<Collider>();
+        _spawnArea = transform.root.GetComponent<Collider>();
         _spawnBounds = _spawnArea.bounds;
         _spawnCenter = _spawnArea.bounds.center;
     }
