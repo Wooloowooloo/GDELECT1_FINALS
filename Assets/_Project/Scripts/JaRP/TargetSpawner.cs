@@ -34,7 +34,6 @@ public class TargetSpawner : MonoBehaviour
 
     private void Update()
     {
-        //_canSpawn = !transform.Cast<Transform>().Any(child => child.gameObject.activeInHierarchy);
         _canSpawn = transform.Cast<Transform>().Where(child => child.gameObject.activeInHierarchy).Count() < 4;
 
         if (_canSpawn)

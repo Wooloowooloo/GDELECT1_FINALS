@@ -78,7 +78,6 @@ public class PlayerRifle : MonoBehaviour
         else
         {
             //_rifleAudio.PlayOneShot(_rifleEmptyShotSFX);
-            Debug.Log("no more bullets");
         }
     }
 

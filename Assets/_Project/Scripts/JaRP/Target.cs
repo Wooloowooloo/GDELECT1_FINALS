@@ -103,7 +103,6 @@ public class Target : MonoBehaviour, ITarget
             };
             _goToPoint = new()
             {
-                //x = pointDeterminant != 0 ? _spawnCenter.x - _spawnBounds.extents.x : _spawnCenter.x + _spawnBounds.extents.x,
                 x = pointDeterminant != 0 ?
                     spawnerLocation.position.x + Random.Range(_spawnCenter.x, _spawnCenter.x - _spawnBounds.extents.x) :
                     spawnerLocation.position.x + Random.Range(_spawnCenter.x, _spawnCenter.x + _spawnBounds.extents.x),
@@ -119,9 +118,8 @@ public class Target : MonoBehaviour, ITarget
 
     public IEnumerator OnHit()
     {
-        UI_Manager manager = FindFirstObjectByType<UI_Manager>();
-        manager.HandleScoreCounter(_targetConfig.BaseScoreValue);
-        //score.currentScore += _targetConfig.BaseScoreValue;
+        GameStateManager manager = FindFirstObjectByType<GameStateManager>();
+        manager.UpdateScore(_targetConfig.BaseScoreValue);
         //_audioSource.PlayOneShot(_targetConfig.DespawnAudio);
 
         if (_targetConfig.TargetShootType == ETargetShootType.DoShoot)

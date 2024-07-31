@@ -4,10 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class UI_Manager : MonoBehaviour
+[DefaultExecutionOrder(0)]
+public class UI_Manager : PersistentSingleton<UI_Manager>
 {
-    public int Score { get; private set; }
-
     [SerializeField] GameObject pause_menu;
     [SerializeField] string scene_name;
 
@@ -16,35 +15,39 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _timer;
     [SerializeField] private TextMeshProUGUI _scoreCounter;
 
-    [Header("Game Configs")]
-    [SerializeField] private float _timeInRound;
+    [Header("Game Over Screen")]
+    [SerializeField] private GameObject _gameOverScreen;
 
+    private GameStateManager _gameStateManager;
     private PlayerRifle _rifle;
-    private float _currentTime;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
+        _gameStateManager = GameStateManager.Instance;
         _rifle = FindFirstObjectByType<PlayerRifle>();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         pause_menu.SetActive(false);
-        _currentTime = _timeInRound;
-        HandleScoreCounter(0);
+        _gameOverScreen.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Escape))
-        //{
-        //    pause_menu.SetActive(true);
-        //    Time.timeScale = 0;
-        //}
-        HandleAmmoCounter();
-        HandleTimer();
+        if (_gameStateManager.CurrentGameState == EGameState.Gameplay)
+        {
+            HandleAmmoCounter();
+            HandleScoreCounter();
+            HandleTimer();
+        }
+
+        if (_gameStateManager.CurrentGameState == EGameState.PostGameplay)
+        {
+            ShowGameOverScreen();
+        }
     }
 
     public void HandleAmmoCounter()
@@ -53,16 +56,21 @@ public class UI_Manager : MonoBehaviour
         _ammoCounter[1].text = $"{_rifle.MaxAmmo}";
     }
 
-    public void HandleScoreCounter(int scoreValue)
+    private void HandleScoreCounter()
     {
-        Score += scoreValue;
-        _scoreCounter.text = $"{Score}";
+        int score = _gameStateManager.CurrentScore;
+        _scoreCounter.text = $"{score}";
     }
 
-    public void HandleTimer()
+    private void HandleTimer()
     {
-        _currentTime -= Time.deltaTime;
-        _timer.text = $"{Mathf.FloorToInt(_currentTime / 60): 0}:{Mathf.FloorToInt(_currentTime % 60):00}";
+        float time = _gameStateManager.CurrentTime;
+        _timer.text = $"{Mathf.FloorToInt(time / 60): 0}:{Mathf.FloorToInt(time % 60):00}";
+    }
+
+    private void ShowGameOverScreen()
+    {
+        _gameOverScreen.SetActive(true);
     }
 
     #region PauseMenu
