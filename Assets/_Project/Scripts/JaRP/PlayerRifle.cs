@@ -6,14 +6,37 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class PlayerRifle : MonoBehaviour
 {
+    [Header("Gun Config")]
     [SerializeField] private int _maxAmmo;
-    [SerializeField] private float _raycastRange;
     [SerializeField] private Transform _firingPoint;
+    [SerializeField] private float _rifleRange;
 
+    [Header("Gun Audio")]
+    [SerializeField] private AudioClip _rifleFireSFX;
+    [SerializeField] private AudioClip _rifleReloadSFX;
+
+    private XRGrabInteractable _interactable;
+    private AudioSource _rifleAudio;
     private int _currentAmmo;
 
     public int MaxAmmo { get => _maxAmmo; private set => _maxAmmo = value; }
     public int CurrentAmmo { get => _currentAmmo; private set => _currentAmmo = Mathf.Clamp(value, 0, MaxAmmo); }
+
+    private void Awake()
+    {
+        _interactable = GetComponent<XRGrabInteractable>();
+        _rifleAudio = GetComponent<AudioSource>();
+    }
+
+    private void OnEnable()
+    {
+        _interactable.activated.AddListener(TriggerHapticFeedback);
+    }
+
+    private void OnDisable()
+    {
+        _interactable.activated.RemoveListener(TriggerHapticFeedback);
+    }
 
     private void Start()
     {
@@ -25,13 +48,22 @@ public class PlayerRifle : MonoBehaviour
         _currentAmmo = Mathf.Clamp(_currentAmmo, 0, _maxAmmo);
     }
 
+    public void TriggerHapticFeedback(ActivateEventArgs arg)
+    {
+        if (arg.interactorObject is XRBaseControllerInteractor interactor )
+        {
+            interactor.SendHapticImpulse(0.5f, 0.3f);
+        }
+    }
+
     public void Shoot()
     {
         if (_currentAmmo > 0)
         {
+            //_rifleAudio.PlayOneShot(_rifleFireSFX);
             _currentAmmo--;
 
-            bool hasHit = Physics.Raycast(_firingPoint.position, _firingPoint.forward, out RaycastHit hit, _raycastRange);
+            bool hasHit = Physics.Raycast(_firingPoint.position, _firingPoint.forward, out RaycastHit hit, _rifleRange);
 
             if (hasHit)
             {
@@ -54,11 +86,12 @@ public class PlayerRifle : MonoBehaviour
 
     public void Reload()
     {
+        //_rifleAudio.PlayOneShot(_rifleReloadSFX);
         _currentAmmo = _maxAmmo;
     }
 
     private void OnDrawGizmosSelected()
     {
-        Debug.DrawRay(_firingPoint.position, _firingPoint.forward * _raycastRange, Color.green);
+        Debug.DrawRay(_firingPoint.position, _firingPoint.forward * _rifleRange, Color.green);
     }
 }
