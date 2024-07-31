@@ -56,7 +56,7 @@ public class UI_Manager : MonoBehaviour
     public void HandleScoreCounter(int scoreValue)
     {
         Score += scoreValue;
-        _scoreCounter.text = $"{Score: 000}";
+        _scoreCounter.text = $"{Score}";
     }
 
     public void HandleTimer()
