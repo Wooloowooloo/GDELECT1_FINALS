@@ -119,8 +119,9 @@ public class Target : MonoBehaviour, ITarget
 
     public IEnumerator OnHit()
     {
-        Score score = FindAnyObjectByType<Score>();
-        score.currentScore += _targetConfig.BaseScoreValue;
+        UI_Manager manager = FindFirstObjectByType<UI_Manager>();
+        manager.HandleScoreCounter(_targetConfig.BaseScoreValue);
+        //score.currentScore += _targetConfig.BaseScoreValue;
         //_audioSource.PlayOneShot(_targetConfig.DespawnAudio);
 
         if (_targetConfig.TargetShootType == ETargetShootType.DoShoot)
