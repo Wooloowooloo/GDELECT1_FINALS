@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5422756431796129861}
   - component: {fileID: -5895120251177045491}
   - component: {fileID: 4978173449552570333}
+  - component: {fileID: 803172728885814767}
   m_Layer: 6
   m_Name: Target Base
   m_TagString: Untagged
@@ -75,6 +76,27 @@ MonoBehaviour:
   _minLifeTime: 5
   _maxLifeTime: 7.5
   _movementSpeed: 0.69
+--- !u!65 &803172728885814767
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4126328944755106262}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.27894208, y: 0.50188327, z: 0.057343356}
+  m_Center: {x: -0.008194491, y: 0.24905837, z: 0.0015322752}
 --- !u!1 &4654865670535396030
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,10 +197,10 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6737642587069424543, guid: 75b64146fc24c7e489c5b193628c0fd0, type: 3}
