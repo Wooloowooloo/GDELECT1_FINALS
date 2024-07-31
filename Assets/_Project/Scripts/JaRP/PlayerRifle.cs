@@ -60,4 +60,3 @@ public class PlayerRifle : MonoBehaviour
         Debug.DrawRay(_firingPoint.position, _firingPoint.forward * _raycastRange, Color.green);
     }
 }
-
