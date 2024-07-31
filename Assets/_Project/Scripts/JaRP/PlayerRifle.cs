@@ -63,29 +63,16 @@ public class PlayerRifle : MonoBehaviour
         if (_currentAmmo > 0)
         {
             //_rifleAudio.PlayOneShot(_rifleFireSFX);
-            //_currentAmmo--;
+            _currentAmmo--;
 
             bool hasHit = Physics.Raycast(_firingPoint.position, _firingPoint.forward, out RaycastHit hit, Mathf.Infinity, _targetLayer);
 
             if (hasHit)
             {
-                //if (hit.transform.gameObject.TryGetComponent<Target>(out var target))
-                //{
-                //    StartCoroutine(target.OnHit());
-                //    Debug.Log($"target {hit.transform.name} hit!");
-                //}
-                //else
-                //{
-                //    Debug.Log($"ya missed, {_currentAmmo} left");
-                //}
-                Target target = hit.transform.GetComponent<Target>();
-                StartCoroutine(target.OnHit());
-
-                Debug.Log($"target {hit.transform.name} hit!");
-            }
-            else
-            {
-                Debug.Log($"ya missed, ya hit {hit.transform.name} instead. {_currentAmmo} left");
+                if (hit.transform.TryGetComponent<Target>(out var target))
+                {
+                    StartCoroutine(target.OnHit());
+                }
             }
         }
         else
