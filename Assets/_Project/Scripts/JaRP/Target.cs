@@ -29,7 +29,8 @@ public class Target : MonoBehaviour, ITarget
     {
         _audioSource = GetComponent<AudioSource>();
         _animator = GetComponent<Animator>();
-        _spawnArea = GetComponentInParent<Collider>();
+        //_spawnArea = GetComponentInParent<Collider>();
+        _spawnArea = Spawner.GetComponent<Collider>();
         _spawnBounds = _spawnArea.bounds;
         _spawnCenter = _spawnArea.bounds.center;
     }
@@ -74,6 +75,8 @@ public class Target : MonoBehaviour, ITarget
 
     public void OnSpawn()
     {
+        Collider collider = GetComponent<Collider>();
+        collider.enabled = true;
         int typeDeterminant = Random.Range(0, 100);
         Transform spawnerLocation = GetComponentInParent<Transform>();
         TargetMoveType = typeDeterminant > 49 ? ETargetMoveType.Stationary : ETargetMoveType.Mobile;
@@ -139,7 +142,7 @@ public class Target : MonoBehaviour, ITarget
 
     public IEnumerator NaturalDespawn()
     {
-        Collider collider = GetComponentInChildren<Collider>();
+        Collider collider = GetComponent<Collider>();
         collider.enabled = false;
         //_audioSource.PlayOneShot(_targetConfig.DespawnAudio);
         _animator.Play(_rotateDespawnHash);
