@@ -85,7 +85,7 @@ public class PlayerRifle : MonoBehaviour
             }
             else
             {
-                Debug.Log($"ya missed, {_currentAmmo} left");
+                Debug.Log($"ya missed, ya hit {hit.transform.name} instead. {_currentAmmo} left");
             }
         }
         else
