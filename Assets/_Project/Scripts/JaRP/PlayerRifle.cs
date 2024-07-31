@@ -30,7 +30,7 @@ public class PlayerRifle : MonoBehaviour
         if (_currentAmmo > 0)
         {
             //recomment dis if shooting works
-            //_currentAmmo--;
+            _currentAmmo--;
 
             //bool hasHit = Physics.Raycast(_firingPoint.position, _firingPoint.forward, out RaycastHit hit, _raycastRange);
 
