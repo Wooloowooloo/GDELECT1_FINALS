@@ -35,7 +35,7 @@ public class PlayerRifle : MonoBehaviour
 
             if (hasHit)
             {
-                if (hit.transform.gameObject.TryGetComponent<ITarget>(out var target))
+                if (hit.collider is ITarget target)
                 {
                     target.OnHit();
                     Debug.Log("target hit!");
