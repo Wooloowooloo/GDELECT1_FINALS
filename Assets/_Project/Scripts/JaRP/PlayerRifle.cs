@@ -11,16 +11,13 @@ public class PlayerRifle : MonoBehaviour
     [SerializeField] private Transform _firingPoint;
 
     private int _currentAmmo;
-    //private XRGrabInteractable _grabInteractable;
-    private LineRenderer _ammoTrail;
 
     public int MaxAmmo { get => _maxAmmo; private set => _maxAmmo = value; }
     public int CurrentAmmo { get => _currentAmmo; private set => _currentAmmo = Mathf.Clamp(value, 0, MaxAmmo); }
 
-    private void Awake()
+    private void Start()
     {
-        //_grabInteractable = GetComponent<XRGrabInteractable>();
-        
+        Reload();
     }
 
     private void Update()
@@ -32,21 +29,26 @@ public class PlayerRifle : MonoBehaviour
     {
         if (_currentAmmo > 0)
         {
-            _currentAmmo--;
+            //recomment dis if shooting works
+            //_currentAmmo--;
 
-            bool hasHit = Physics.Raycast(_firingPoint.position, _firingPoint.forward, out RaycastHit hit, _raycastRange);
+            //bool hasHit = Physics.Raycast(_firingPoint.position, _firingPoint.forward, out RaycastHit hit, _raycastRange);
 
-            if (hasHit)
-            {
-                if (hit.transform.TryGetComponent(out ITarget target))
-                {
-                    target.OnHit();
-                }
-            }
+            //if (hasHit)
+            //{
+            //    if (hit.transform.TryGetComponent(out ITarget target))
+            //    {
+            //        target.OnHit();
+            //    }
+            //}
+
+
+            //test
+            Debug.Log($"Pepe Le Pew! {_currentAmmo} bullets remaining.");
         }
         else
         {
-            Debug.Log("no bullets");
+            Debug.Log("no more bullets");
         }
     }
 
