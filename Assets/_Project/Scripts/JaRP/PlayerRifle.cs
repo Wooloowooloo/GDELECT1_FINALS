@@ -68,9 +68,9 @@ public class PlayerRifle : MonoBehaviour
 
             if (hasHit)
             {
-                if (hit.collider is ITarget target)
+                if (hit.transform.gameObject.TryGetComponent<Target>(out var target))
                 {
-                    target.OnHit();
+                    StartCoroutine(target.OnHit());
                     Debug.Log("target hit!");
                 }
                 else
