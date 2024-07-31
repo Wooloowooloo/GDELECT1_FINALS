@@ -10,6 +10,7 @@ public class PlayerRifle : MonoBehaviour
     [SerializeField] private int _maxAmmo;
     [SerializeField] private Transform _firingPoint;
     [SerializeField] private float _rifleRange;
+    [SerializeField] private LayerMask _targetLayer;
 
     [Header("Gun Audio")]
     [SerializeField] private AudioClip _rifleShotSFX;
@@ -62,21 +63,29 @@ public class PlayerRifle : MonoBehaviour
         if (_currentAmmo > 0)
         {
             //_rifleAudio.PlayOneShot(_rifleFireSFX);
-            _currentAmmo--;
+            //_currentAmmo--;
 
-            bool hasHit = Physics.Raycast(_firingPoint.position, _firingPoint.forward, out RaycastHit hit, _rifleRange);
+            bool hasHit = Physics.Raycast(_firingPoint.position, _firingPoint.forward, out RaycastHit hit, Mathf.Infinity, _targetLayer);
 
             if (hasHit)
             {
-                if (hit.transform.gameObject.TryGetComponent<Target>(out var target))
-                {
-                    StartCoroutine(target.OnHit());
-                    Debug.Log("target hit!");
-                }
-                else
-                {
-                    Debug.Log("ya missed");
-                }
+                //if (hit.transform.gameObject.TryGetComponent<Target>(out var target))
+                //{
+                //    StartCoroutine(target.OnHit());
+                //    Debug.Log($"target {hit.transform.name} hit!");
+                //}
+                //else
+                //{
+                //    Debug.Log($"ya missed, {_currentAmmo} left");
+                //}
+                Target target = hit.transform.GetComponent<Target>();
+                StartCoroutine(target.OnHit());
+
+                Debug.Log($"target {hit.transform.name} hit!");
+            }
+            else
+            {
+                Debug.Log($"ya missed, {_currentAmmo} left");
             }
         }
         else

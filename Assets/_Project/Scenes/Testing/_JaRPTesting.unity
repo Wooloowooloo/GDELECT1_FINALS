@@ -1149,7 +1149,7 @@ MonoBehaviour:
   m_Camera: {fileID: 1026302784}
   m_OriginBaseGameObject: {fileID: 384159611}
   m_CameraFloorOffsetObject: {fileID: 116214175}
-  m_RequestedTrackingOriginMode: 2
+  m_RequestedTrackingOriginMode: 1
   m_CameraYOffset: 1.1176
 --- !u!4 &384159614
 Transform:
@@ -4101,7 +4101,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxAmmo: 7
   _firingPoint: {fileID: 1317643120}
-  _rifleRange: 0
+  _rifleRange: 5
+  _targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
   _rifleShotSFX: {fileID: 0}
   _rifleEmptyShotSFX: {fileID: 0}
   _rifleReloadSFX: {fileID: 0}
