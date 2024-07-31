@@ -15,6 +15,7 @@ public class Target : MonoBehaviour, ITarget
     [SerializeField] private float _maxLifeTime;
     [SerializeField] private float _movementSpeed;
 
+    private AudioSource _audioSource;
     private Animator _animator;
     private Collider _spawnArea;
     private Bounds _spawnBounds;
@@ -26,6 +27,7 @@ public class Target : MonoBehaviour, ITarget
 
     private void Awake()
     {
+        _audioSource = GetComponent<AudioSource>();
         _animator = GetComponent<Animator>();
         _spawnArea = GetComponentInParent<Collider>();
         _spawnBounds = _spawnArea.bounds;
@@ -75,6 +77,7 @@ public class Target : MonoBehaviour, ITarget
         int typeDeterminant = Random.Range(0, 100);
         Transform spawnerLocation = GetComponentInParent<Transform>();
         TargetMoveType = typeDeterminant > 49 ? ETargetMoveType.Stationary : ETargetMoveType.Mobile;
+        //_audioSource.PlayOneShot(_targetConfig.SpawnAudio);
 
         if (TargetMoveType == ETargetMoveType.Stationary)
         {
@@ -116,6 +119,7 @@ public class Target : MonoBehaviour, ITarget
     {
         Score score = FindAnyObjectByType<Score>();
         score.currentScore += _targetConfig.BaseScoreValue;
+        //_audioSource.PlayOneShot(_targetConfig.DespawnAudio);
 
         if (_targetConfig.TargetShootType == ETargetShootType.DoShoot)
         {
@@ -137,6 +141,7 @@ public class Target : MonoBehaviour, ITarget
     {
         Collider collider = GetComponentInChildren<Collider>();
         collider.enabled = false;
+        //_audioSource.PlayOneShot(_targetConfig.DespawnAudio);
         _animator.Play(_rotateDespawnHash);
 
         yield return new WaitForSeconds(0.25f);

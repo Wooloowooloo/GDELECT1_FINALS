@@ -12,7 +12,8 @@ public class PlayerRifle : MonoBehaviour
     [SerializeField] private float _rifleRange;
 
     [Header("Gun Audio")]
-    [SerializeField] private AudioClip _rifleFireSFX;
+    [SerializeField] private AudioClip _rifleShotSFX;
+    [SerializeField] private AudioClip _rifleEmptyShotSFX;
     [SerializeField] private AudioClip _rifleReloadSFX;
 
     private XRGrabInteractable _interactable;
@@ -80,6 +81,7 @@ public class PlayerRifle : MonoBehaviour
         }
         else
         {
+            //_rifleAudio.PlayOneShot(_rifleEmptyShotSFX);
             Debug.Log("no more bullets");
         }
     }
