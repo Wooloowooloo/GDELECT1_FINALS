@@ -4104,7 +4104,7 @@ MonoBehaviour:
   _rifleRange: 5
   _targetLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   _rifleShotSFX: {fileID: 0}
   _rifleEmptyShotSFX: {fileID: 0}
   _rifleReloadSFX: {fileID: 0}
