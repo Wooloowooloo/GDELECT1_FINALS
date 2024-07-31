@@ -29,22 +29,22 @@ public class PlayerRifle : MonoBehaviour
     {
         if (_currentAmmo > 0)
         {
-            //recomment dis if shooting works
             _currentAmmo--;
 
-            //bool hasHit = Physics.Raycast(_firingPoint.position, _firingPoint.forward, out RaycastHit hit, _raycastRange);
+            bool hasHit = Physics.Raycast(_firingPoint.position, _firingPoint.forward, out RaycastHit hit, _raycastRange);
 
-            //if (hasHit)
-            //{
-            //    if (hit.transform.TryGetComponent(out ITarget target))
-            //    {
-            //        target.OnHit();
-            //    }
-            //}
-
-
-            //test
-            Debug.Log($"Pepe Le Pew! {_currentAmmo} bullets remaining.");
+            if (hasHit)
+            {
+                if (hit.transform.gameObject.TryGetComponent<ITarget>(out var target))
+                {
+                    target.OnHit();
+                    Debug.Log("target hit!");
+                }
+                else
+                {
+                    Debug.Log("ya missed");
+                }
+            }
         }
         else
         {
