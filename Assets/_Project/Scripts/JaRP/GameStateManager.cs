@@ -1,7 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
 [DefaultExecutionOrder(-10)]
 public class GameStateManager : PersistentSingleton<GameStateManager>
@@ -38,12 +38,7 @@ public class GameStateManager : PersistentSingleton<GameStateManager>
 
         if (_currentTime <= 0f)
         {
-            SetGameState(EGameState.PostGameplay);
-
-            //testing to check if time's up
-#if UNITY_EDITOR
-            EditorApplication.ExitPlaymode();
-#endif
+            SetGameState((int)EGameState.PostGameplay);
         }
     }
 
@@ -53,14 +48,14 @@ public class GameStateManager : PersistentSingleton<GameStateManager>
         Mathf.Clamp(_currentScore, 0, int.MaxValue);
     }
 
-    public void SetGameState(EGameState targetState)
+    public void SetGameState(int stateIndex)
     {
-        CurrentGameState = targetState;
+        CurrentGameState = (EGameState)stateIndex;
     }
 
     public void StartNewGame()
     {
-        SetGameState(EGameState.Gameplay);
+        SetGameState((int)EGameState.PreGameplay);
         _currentTime = _timePerRound;
         _currentScore = 0;
         //play audio stinger
@@ -69,7 +64,7 @@ public class GameStateManager : PersistentSingleton<GameStateManager>
 
     private void EndGame()
     {
-        SetGameState(EGameState.PostGameplay);
+        SetGameState((int)EGameState.PostGameplay);
         //play audio stinger
         //play persisting bgm
     }

@@ -16,6 +16,7 @@ public class TargetSpawner : MonoBehaviour
     [SerializeField] private List<Target> _targetsList;
 
     private List<Target> _targetsInPool = new();
+    private GameStateManager _gameStateManager;
     protected Collider SpawnArea;
 
     private bool _canSpawn;
@@ -24,6 +25,8 @@ public class TargetSpawner : MonoBehaviour
 
     private void Awake()
     {
+        _gameStateManager = GameStateManager.Instance;
+
         for (int i = 0; i < _maxPoolSize - 1; i++)
         {
             GenerateTargets(i % _targetsList.Count);
@@ -34,7 +37,8 @@ public class TargetSpawner : MonoBehaviour
 
     private void Update()
     {
-        _canSpawn = transform.Cast<Transform>().Where(child => child.gameObject.activeInHierarchy).Count() < 4;
+        _canSpawn = transform.Cast<Transform>().Where(child => child.gameObject.activeInHierarchy).Count() < 4 
+            && _gameStateManager.CurrentGameState == EGameState.Gameplay;
 
         if (_canSpawn)
         {
