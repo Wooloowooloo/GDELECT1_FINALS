@@ -84,19 +84,19 @@ public class GameStateManager : PersistentSingleton<GameStateManager>
         _rifle.ResetRifleLocation();
         _currentTime = _timePerRound;
         _currentScore = 0;
-        _audioManager.PlayMusic(EMusicType.NonGameplay);
+        //_audioManager.PlayMusic(EMusicType.NonGameplay);
     }
 
     public void PlayRound()
     {
         SetGameState((int)EGameState.Gameplay);
-        _audioManager.PlayMusic(EMusicType.Gameplay);
+        //_audioManager.PlayMusic(EMusicType.Gameplay);
     }
 
     private void EndGame()
     {
         SetGameState((int)EGameState.PostGameplay);
-        _audioManager.PlayMusic(EMusicType.NonGameplay);
+        //_audioManager.PlayMusic(EMusicType.NonGameplay);
     }
 
     public void QuitGame()

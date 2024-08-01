@@ -93,6 +93,4 @@ public class UI_Manager : PersistentSingleton<UI_Manager>
         SceneManager.LoadScene(scene_name);   
     }
     #endregion
-
-
 }
