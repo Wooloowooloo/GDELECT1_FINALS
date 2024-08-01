@@ -19,6 +19,9 @@ public class PlayerRifle : MonoBehaviour
 
     private XRGrabInteractable _interactable;
     private AudioSource _rifleAudio;
+    private Collider _rifleCollider;
+    private Vector3 _resetPosition;
+    private Quaternion _resetRotation;
     private int _currentAmmo;
 
     public int MaxAmmo { get => _maxAmmo; private set => _maxAmmo = value; }
@@ -28,6 +31,8 @@ public class PlayerRifle : MonoBehaviour
     {
         _interactable = GetComponent<XRGrabInteractable>();
         _rifleAudio = GetComponent<AudioSource>();
+        _resetPosition = transform.position;
+        _resetRotation = transform.rotation;
     }
 
     private void OnEnable()
@@ -85,6 +90,11 @@ public class PlayerRifle : MonoBehaviour
     {
         //_rifleAudio.PlayOneShot(_rifleReloadSFX);
         _currentAmmo = _maxAmmo;
+    }
+
+    public void ResetRifleLocation()
+    {
+        transform.SetPositionAndRotation(_resetPosition, _resetRotation);
     }
 
     private void OnDrawGizmosSelected()

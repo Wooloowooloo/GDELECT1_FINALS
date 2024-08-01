@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 [DefaultExecutionOrder(-10)]
 public class GameStateManager : PersistentSingleton<GameStateManager>
@@ -38,7 +39,7 @@ public class GameStateManager : PersistentSingleton<GameStateManager>
 
         if (_currentTime <= 0f)
         {
-            SetGameState((int)EGameState.PostGameplay);
+            EndGame();
         }
     }
 
@@ -55,6 +56,9 @@ public class GameStateManager : PersistentSingleton<GameStateManager>
 
     public void StartNewGame()
     {
+        PlayerRifle rifle = FindObjectOfType<PlayerRifle>();
+        rifle.gameObject.SetActive(true);
+        rifle.ResetRifleLocation();
         SetGameState((int)EGameState.PreGameplay);
         _currentTime = _timePerRound;
         _currentScore = 0;
@@ -65,8 +69,18 @@ public class GameStateManager : PersistentSingleton<GameStateManager>
     private void EndGame()
     {
         SetGameState((int)EGameState.PostGameplay);
+        PlayerRifle rifle = FindObjectOfType<PlayerRifle>();
+        rifle.gameObject.SetActive(false);
         //play audio stinger
         //play persisting bgm
+    }
+
+    public void QuitGame()
+    {
+#if UNITY_EDITOR
+        EditorApplication.isPlaying = false;
+#endif
+        Application.Quit();
     }
 }
 
