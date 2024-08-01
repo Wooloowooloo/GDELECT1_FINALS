@@ -14,6 +14,7 @@ public class GameStateManager : PersistentSingleton<GameStateManager>
     public float TimePerRound { get => _timePerRound; private set => _timePerRound = value; }
     public int CurrentScore { get => _currentScore; private set => _currentTime = value; }
 
+    private PlayerRifle _rifle;
     private float _currentTime;
     private int _currentScore;
 
@@ -21,7 +22,11 @@ public class GameStateManager : PersistentSingleton<GameStateManager>
     {
         base.Awake();
 
-        StartNewGame();
+        _rifle = FindObjectOfType<PlayerRifle>();
+        _currentTime = _timePerRound;
+        _currentScore = 0;
+
+        SetGameState((int)EGameState.PreGameplay);
     }
 
     private void Update()
@@ -56,10 +61,8 @@ public class GameStateManager : PersistentSingleton<GameStateManager>
 
     public void StartNewGame()
     {
-        PlayerRifle rifle = FindObjectOfType<PlayerRifle>();
-        rifle.gameObject.SetActive(true);
-        rifle.ResetRifleLocation();
         SetGameState((int)EGameState.PreGameplay);
+        _rifle.ResetRifleLocation();
         _currentTime = _timePerRound;
         _currentScore = 0;
         //play audio stinger
@@ -69,8 +72,6 @@ public class GameStateManager : PersistentSingleton<GameStateManager>
     private void EndGame()
     {
         SetGameState((int)EGameState.PostGameplay);
-        PlayerRifle rifle = FindObjectOfType<PlayerRifle>();
-        rifle.gameObject.SetActive(false);
         //play audio stinger
         //play persisting bgm
     }
