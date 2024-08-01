@@ -14,19 +14,32 @@ public class GameStateManager : PersistentSingleton<GameStateManager>
     public float TimePerRound { get => _timePerRound; private set => _timePerRound = value; }
     public int CurrentScore { get => _currentScore; private set => _currentTime = value; }
 
+    private AudioManager _audioManager;
     private PlayerRifle _rifle;
     private float _currentTime;
     private int _currentScore;
+    private int _highScore;
 
     protected override void Awake()
     {
         base.Awake();
 
+        _audioManager = AudioManager.Instance;
         _rifle = FindObjectOfType<PlayerRifle>();
         _currentTime = _timePerRound;
         _currentScore = 0;
 
         SetGameState((int)EGameState.PreGameplay);
+    }
+
+    private void Start()
+    {
+        if (PlayerPrefs.HasKey("High Score"))
+        {
+            _highScore = PlayerPrefs.GetInt("High Score");
+        }
+
+        _audioManager.PlayMusic(EMusicType.NonGameplay);
     }
 
     private void Update()
@@ -52,9 +65,15 @@ public class GameStateManager : PersistentSingleton<GameStateManager>
     {
         _currentScore += scoreValue;
         Mathf.Clamp(_currentScore, 0, int.MaxValue);
+
+        if (_currentScore > _highScore)
+        {
+            _highScore = _currentScore;
+            PlayerPrefs.SetInt("High Score", _highScore);
+        }
     }
 
-    public void SetGameState(int stateIndex)
+    private void SetGameState(int stateIndex)
     {
         CurrentGameState = (EGameState)stateIndex;
     }
@@ -65,15 +84,19 @@ public class GameStateManager : PersistentSingleton<GameStateManager>
         _rifle.ResetRifleLocation();
         _currentTime = _timePerRound;
         _currentScore = 0;
-        //play audio stinger
-        // play persisting bgm
+        _audioManager.PlayMusic(EMusicType.NonGameplay);
+    }
+
+    public void PlayRound()
+    {
+        SetGameState((int)EGameState.Gameplay);
+        _audioManager.PlayMusic(EMusicType.Gameplay);
     }
 
     private void EndGame()
     {
         SetGameState((int)EGameState.PostGameplay);
-        //play audio stinger
-        //play persisting bgm
+        _audioManager.PlayMusic(EMusicType.NonGameplay);
     }
 
     public void QuitGame()

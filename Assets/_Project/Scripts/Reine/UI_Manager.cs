@@ -10,13 +10,17 @@ public class UI_Manager : PersistentSingleton<UI_Manager>
     [SerializeField] GameObject pause_menu;
     [SerializeField] string scene_name;
 
-    [Header("UI Counters")]
+    [Header("Pre Gameplay")]
+    [SerializeField] private GameObject _preGameplayScreen;
+
+    [Header("Gameplay Counters")]
     [SerializeField] private TextMeshProUGUI[] _ammoCounter;
     [SerializeField] private TextMeshProUGUI _timer;
     [SerializeField] private TextMeshProUGUI _scoreCounter;
 
-    [Header("Game Over Screen")]
+    [Header("Post Gameplay")]
     [SerializeField] private GameObject _gameOverScreen;
+    [SerializeField] private TextMeshProUGUI _scoreText;
 
     private GameStateManager _gameStateManager;
     private PlayerRifle _rifle;
@@ -37,6 +41,8 @@ public class UI_Manager : PersistentSingleton<UI_Manager>
 
     void Update()
     {
+        TogglePreGameplayScreen();
+
         if (_gameStateManager.CurrentGameState == EGameState.Gameplay)
         {
             HandleAmmoCounter();
@@ -44,10 +50,7 @@ public class UI_Manager : PersistentSingleton<UI_Manager>
             HandleTimer();
         }
 
-        if (_gameStateManager.CurrentGameState == EGameState.PostGameplay)
-        {
-            ShowGameOverScreen();
-        }
+        ToggleGameOverScreen();
     }
 
     public void HandleAmmoCounter()
@@ -58,8 +61,7 @@ public class UI_Manager : PersistentSingleton<UI_Manager>
 
     private void HandleScoreCounter()
     {
-        int score = _gameStateManager.CurrentScore;
-        _scoreCounter.text = $"{score}";
+        _scoreCounter.text = $"{_gameStateManager.CurrentScore}";
     }
 
     private void HandleTimer()
@@ -68,9 +70,15 @@ public class UI_Manager : PersistentSingleton<UI_Manager>
         _timer.text = $"{Mathf.FloorToInt(time / 60): 0}:{Mathf.FloorToInt(time % 60):00}";
     }
 
-    private void ShowGameOverScreen()
+    private void TogglePreGameplayScreen()
     {
-        _gameOverScreen.SetActive(true);
+        _preGameplayScreen.SetActive(_gameStateManager.CurrentGameState == EGameState.PreGameplay);
+    }
+
+    private void ToggleGameOverScreen()
+    {
+        _gameOverScreen.SetActive(_gameStateManager.CurrentGameState == EGameState.PostGameplay);
+        _scoreText.text = $"{_gameStateManager.CurrentScore}";
     }
 
     #region PauseMenu
