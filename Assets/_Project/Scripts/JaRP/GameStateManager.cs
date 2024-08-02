@@ -99,6 +99,7 @@ public class GameStateManager : PersistentSingleton<GameStateManager>
 
     private void EndGame()
     {
+        PlayerPrefs.Save();
         SetGameState((int)EGameState.PostGameplay);
         _audioManager.PlayMusic(EMusicType.NonGameplay);
     }
