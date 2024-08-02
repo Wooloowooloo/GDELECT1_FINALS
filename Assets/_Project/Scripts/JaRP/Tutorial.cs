@@ -45,6 +45,7 @@ public class Tutorial : MonoBehaviour
             pages.SetActive(false);
         }
 
+        _continueButton.SetActive(true);
         _tutorialPages[_pageIndex].SetActive(true);
     }
 }
