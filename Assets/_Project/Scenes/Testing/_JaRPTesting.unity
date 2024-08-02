@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.19050121, g: 0.15656576, b: 0.22926033, a: 1}
+  m_IndirectSpecularColor: {r: 0.16761994, g: 0.13927417, b: 0.20657209, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -17224,7 +17224,7 @@ RectTransform:
   m_GameObject: {fileID: 1866338184}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -23.000051}
-  m_LocalScale: {x: 3.3043659, y: 3.3043659, z: 3.3043659}
+  m_LocalScale: {x: 0.67380154, y: 0.67380154, z: 0.67380154}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1980231832}
@@ -17232,8 +17232,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 504, y: -287}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 504, y: -336}
+  m_SizeDelta: {x: 768, y: 192}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1866338186
 MonoBehaviour:
@@ -17254,7 +17254,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -17264,10 +17264,11 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: e0af5cbcaeb182c4992d3950268f2d0a,
+      type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: e0af5cbcaeb182c4992d3950268f2d0a, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: e0af5cbcaeb182c4992d3950268f2d0a, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: e0af5cbcaeb182c4992d3950268f2d0a, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -17323,8 +17324,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: ed8242fbfe51a2542b6e21b0c6b7b6c5, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -17922,16 +17923,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1980231831}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.0132522, w: 0.9999122}
+  m_LocalPosition: {x: 0, y: 0, z: -0.00005661455}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1866338185}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1.519}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 85, y: 10}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1980231833
@@ -17982,8 +17983,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
