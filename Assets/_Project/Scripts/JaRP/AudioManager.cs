@@ -30,7 +30,7 @@ public class AudioManager : PersistentSingleton<AudioManager>
     {
         if (_currentMusic != null)
         {
-            StartCoroutine(Fade(_currentMusic, 0.25f, 0.5f));          
+            StartCoroutine(Fade(_currentMusic, 0.25f, 0.2f));          
         }
 
         if (musicToPlay == EMusicType.Gameplay)
@@ -44,7 +44,7 @@ public class AudioManager : PersistentSingleton<AudioManager>
             _nextMusic = _gameplayMusic;
         }
 
-        _currentMusic.volume = 0.5f;
+        _currentMusic.volume = 0.2f;
         _currentMusic.Play();
     }
 
