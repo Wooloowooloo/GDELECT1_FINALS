@@ -8,6 +8,7 @@ using UnityEditor;
 public class GameStateManager : PersistentSingleton<GameStateManager>
 {
     [SerializeField] private float _timePerRound;
+    [SerializeField] private Tutorial _tutorial;
 
     public EGameState CurrentGameState { get; private set; }
     public float CurrentTime { get => _currentTime; private set => _currentTime = value; }
@@ -88,8 +89,7 @@ public class GameStateManager : PersistentSingleton<GameStateManager>
         _rifle.ResetRifleLocation();
         _currentTime = _timePerRound;
         _currentScore = 0;
-        Tutorial tutorial = FindObjectOfType<Tutorial>();
-        tutorial.ResetTutorialPages();
+        _tutorial.ResetTutorialPages();
         _audioManager.PlayMusic(EMusicType.NonGameplay);
     }
 
