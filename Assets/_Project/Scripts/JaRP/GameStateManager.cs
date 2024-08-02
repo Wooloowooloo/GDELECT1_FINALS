@@ -16,6 +16,7 @@ public class GameStateManager : PersistentSingleton<GameStateManager>
     public int HighScore { get => _highScore; private set => _highScore = value; }
 
     private AudioManager _audioManager;
+    private UI_Manager _uiManager;
     private PlayerRifle _rifle;
     private float _currentTime;
     private int _currentScore;
@@ -26,6 +27,7 @@ public class GameStateManager : PersistentSingleton<GameStateManager>
         base.Awake();
 
         _audioManager = AudioManager.Instance;
+        _uiManager = UI_Manager.Instance;
         _rifle = FindObjectOfType<PlayerRifle>();
         _currentTime = _timePerRound;
         _currentScore = 0;
@@ -71,6 +73,7 @@ public class GameStateManager : PersistentSingleton<GameStateManager>
         {
             _highScore = _currentScore;
             PlayerPrefs.SetInt("High Score", _highScore);
+            _uiManager.HandleHighScoreText();
         }
     }
 

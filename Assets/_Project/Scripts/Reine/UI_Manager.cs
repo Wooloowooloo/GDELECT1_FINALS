@@ -12,6 +12,7 @@ public class UI_Manager : PersistentSingleton<UI_Manager>
 
     [Header("Pre Gameplay")]
     [SerializeField] private GameObject _preGameplayScreen;
+    [SerializeField] private TextMeshProUGUI _highScoreText;
 
     [Header("Gameplay Counters")]
     [SerializeField] private TextMeshProUGUI[] _ammoCounter;
@@ -37,6 +38,7 @@ public class UI_Manager : PersistentSingleton<UI_Manager>
     {
         pause_menu.SetActive(false);
         _gameOverScreen.SetActive(false);
+        HandleHighScoreText();
     }
 
     void Update()
@@ -68,6 +70,11 @@ public class UI_Manager : PersistentSingleton<UI_Manager>
     {
         float time = _gameStateManager.CurrentTime;
         _timer.text = $"{Mathf.FloorToInt(time / 60): 0}:{Mathf.FloorToInt(time % 60):00}";
+    }
+
+    public void HandleHighScoreText()
+    {
+        _highScoreText.text = $"{_gameStateManager.HighScore}";
     }
 
     private void TogglePreGameplayScreen()
