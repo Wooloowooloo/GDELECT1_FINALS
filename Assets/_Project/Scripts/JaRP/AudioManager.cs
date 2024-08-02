@@ -24,23 +24,24 @@ public class AudioManager : PersistentSingleton<AudioManager>
     [SerializeField] private AudioSource _endRound;
     [SerializeField] private AudioSource _playAgain;
 
-    private AudioSource _currentMusic;
+    private AudioSource _currentMusic, _nextMusic;
 
     public void PlayMusic(EMusicType musicToPlay)
     {
         if (_currentMusic != null)
         {
-            StartCoroutine(Fade(_currentMusic, 1f, 0f));
-            _currentMusic.Stop();
+            StartCoroutine(Fade(_currentMusic, 1f, 0f));           
         }
 
         if (musicToPlay == EMusicType.Gameplay)
         {
             _currentMusic = _gameplayMusic;
+            _nextMusic = _nonGameplayMusic;
         }
         else
         {
             _currentMusic = _nonGameplayMusic;
+            _nextMusic = _gameplayMusic;
         }
 
         _currentMusic.volume = 0.5f;
@@ -83,6 +84,7 @@ public class AudioManager : PersistentSingleton<AudioManager>
 
     private IEnumerator Fade(AudioSource audioToFade, float fadeDuration, float targetVolume)
     {
+        /*
         float fadeTime = 0f;
         float startingVolume = audioToFade.volume;
 
@@ -91,7 +93,19 @@ public class AudioManager : PersistentSingleton<AudioManager>
             fadeTime += Time.deltaTime;
             audioToFade.volume = Mathf.Lerp(startingVolume, targetVolume, fadeTime / fadeDuration);
             yield return null;
+        }*/
+        float fadeTime = 0f;
+        _nextMusic.Play();
+
+        while (fadeTime <= fadeDuration)
+        {
+            _nextMusic.volume = Mathf.Lerp(0, targetVolume, fadeTime / fadeDuration);
+            _currentMusic.volume = Mathf.Lerp(targetVolume, 0, fadeTime / fadeDuration);
+            fadeDuration += Time.deltaTime;
+            yield return null;
         }
+
+        _currentMusic.Stop();
     }
 }
 
