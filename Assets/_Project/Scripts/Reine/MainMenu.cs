@@ -6,7 +6,13 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] string scene_name;
+    [SerializeField] AudioSource _bgSFX;
     [SerializeField] AudioSource _clickSFX;
+
+    private void Start()
+    {
+        _bgSFX.Play();
+    }
 
     public void PlayGame()
     {

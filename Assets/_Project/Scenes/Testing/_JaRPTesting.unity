@@ -13994,7 +13994,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AutoUnparentOnAwake: 1
   pause_menu: {fileID: 308115214}
-  scene_name: 
+  scene_name: MainMenu
   _preGameplayScreen: {fileID: 314317650}
   _highScoreText: {fileID: 7443652364262056247}
   _ammoCounter:
