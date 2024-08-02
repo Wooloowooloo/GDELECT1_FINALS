@@ -30,7 +30,8 @@ public class AudioManager : PersistentSingleton<AudioManager>
     {
         if (_currentMusic != null)
         {
-            StartCoroutine(Fade(_currentMusic, 2f, 0f));
+            StartCoroutine(Fade(_currentMusic, 1f, 0f));
+            _currentMusic.Stop();
         }
 
         if (musicToPlay == EMusicType.Gameplay)
@@ -85,7 +86,7 @@ public class AudioManager : PersistentSingleton<AudioManager>
         float fadeTime = 0f;
         float startingVolume = audioToFade.volume;
 
-        while (fadeTime > fadeDuration)
+        while (fadeTime <= fadeDuration)
         {
             fadeTime += Time.deltaTime;
             audioToFade.volume = Mathf.Lerp(startingVolume, targetVolume, fadeTime / fadeDuration);
