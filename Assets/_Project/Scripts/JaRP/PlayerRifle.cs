@@ -12,6 +12,7 @@ public class PlayerRifle : MonoBehaviour
     [SerializeField] private float _rifleRange;
     [SerializeField] private LayerMask _targetLayer;
 
+    private AudioManager _audioManager;
     private XRGrabInteractable _interactable;
     private Vector3 _resetPosition;
     private Quaternion _resetRotation;
@@ -22,6 +23,7 @@ public class PlayerRifle : MonoBehaviour
 
     private void Awake()
     {
+        _audioManager = AudioManager.Instance;
         _interactable = GetComponent<XRGrabInteractable>();
         _resetPosition = transform.position;
         _resetRotation = transform.rotation;
@@ -59,7 +61,7 @@ public class PlayerRifle : MonoBehaviour
     {
         if (_currentAmmo > 0)
         {
-            //_rifleAudio.PlayOneShot(_rifleFireSFX);
+            _audioManager.PlaySFX(ESFXType.RifleShot);
             _currentAmmo--;
 
             bool hasHit = Physics.Raycast(_firingPoint.position, _firingPoint.forward, out RaycastHit hit, Mathf.Infinity, _targetLayer);
@@ -74,13 +76,13 @@ public class PlayerRifle : MonoBehaviour
         }
         else
         {
-            //_rifleAudio.PlayOneShot(_rifleEmptyShotSFX);
+            _audioManager.PlaySFX(ESFXType.RifleEmptyShot);
         }
     }
 
     public void Reload()
     {
-        //_rifleAudio.PlayOneShot(_rifleReloadSFX);
+        _audioManager.PlaySFX(ESFXType.RifleReload);
         _currentAmmo = _maxAmmo;
     }
 
