@@ -19,10 +19,8 @@ public class AudioManager : PersistentSingleton<AudioManager>
     [SerializeField] private AudioSource _spawnerDespawn;
     [SerializeField] private AudioSource _targetHit;
 
-    [Header("Stinger Transitions")]
-    [SerializeField] private AudioSource _startRound;
-    [SerializeField] private AudioSource _endRound;
-    [SerializeField] private AudioSource _playAgain;
+    [Header("Button SFX")]
+    [SerializeField] private AudioSource _button;
 
     private AudioSource _currentMusic, _nextMusic;
 
@@ -70,16 +68,12 @@ public class AudioManager : PersistentSingleton<AudioManager>
             case ESFXType.TargetHit:
                 _targetHit.Play();
                 break;
-            case ESFXType.StartRound:
-                _startRound.Play();
-                break;
-            case ESFXType.EndRound:
-                _endRound.Play();
-                break;
-            case ESFXType.PlayAgain:
-                _playAgain.Play();
-                break;
         }
+    }
+
+    public void PlayButtonSFX()
+    {
+        _button.Play();
     }
 
     private IEnumerator Fade(AudioSource audioToFade, float fadeDuration, float targetVolume)
@@ -123,7 +117,5 @@ public enum ESFXType
     SpawnerSpawn,
     SpawnerDespawn,
     TargetHit,
-    StartRound,
-    EndRound,
-    PlayAgain
+    Button
 }

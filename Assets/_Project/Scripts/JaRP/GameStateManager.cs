@@ -88,6 +88,8 @@ public class GameStateManager : PersistentSingleton<GameStateManager>
         _rifle.ResetRifleLocation();
         _currentTime = _timePerRound;
         _currentScore = 0;
+        Tutorial tutorial = FindObjectOfType<Tutorial>();
+        tutorial.ResetTutorialPages();
         _audioManager.PlayMusic(EMusicType.NonGameplay);
     }
 

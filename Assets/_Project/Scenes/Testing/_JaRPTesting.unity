@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.20744139, g: 0.169549, b: 0.2465949, a: 1}
+  m_IndirectSpecularColor: {r: 0.28912798, g: 0.2340279, b: 0.3345121, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3828,9 +3828,7 @@ MonoBehaviour:
   _spawnerSpawn: {fileID: 989279513}
   _spawnerDespawn: {fileID: 961439405}
   _targetHit: {fileID: 662074158}
-  _startRound: {fileID: 0}
-  _endRound: {fileID: 0}
-  _playAgain: {fileID: 0}
+  _button: {fileID: 0}
 --- !u!1001 &307517037
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11319,6 +11317,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 301171817}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayButtonSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1142028175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11439,7 +11449,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1144621750}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2028684540}
+        m_TargetAssemblyTypeName: Tutorial, Assembly-CSharp
+        m_MethodName: NextPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 301171817}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayButtonSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1144621750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17095,6 +17129,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 301171817}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayButtonSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1866338187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18301,6 +18347,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2028684539}
+  - component: {fileID: 2028684540}
   m_Layer: 5
   m_Name: Dialogue
   m_TagString: Untagged
@@ -18331,6 +18378,23 @@ RectTransform:
   m_AnchoredPosition: {x: 97, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2028684540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2028684538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bf53b1e299fb5a4e8d951cb3159eec4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tutorialPages:
+  - {fileID: 253674266}
+  - {fileID: 208706635}
+  - {fileID: 1797322339}
+  _continueButton: {fileID: 1144621747}
 --- !u!1001 &2030483332
 PrefabInstance:
   m_ObjectHideFlags: 0
