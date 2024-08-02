@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3201431, g: 0.25861406, b: 0.3684007, a: 1}
+  m_IndirectSpecularColor: {r: 0.20744139, g: 0.169549, b: 0.2465949, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -13960,12 +13960,14 @@ MonoBehaviour:
   pause_menu: {fileID: 308115214}
   scene_name: 
   _preGameplayScreen: {fileID: 314317650}
-  _highScoreText: {fileID: 0}
+  _highScoreText: {fileID: 7443652364262056247}
   _ammoCounter:
   - {fileID: 1837112848}
   - {fileID: 1858592000}
   _timer: {fileID: 2058637346}
   _scoreCounter: {fileID: 764415417}
+  _timerScreen: {fileID: 400721770}
+  _scoreScreen: {fileID: 660841937}
   _gameOverScreen: {fileID: 1943685635}
   _scoreText: {fileID: 525950166}
 --- !u!1001 &1485623964

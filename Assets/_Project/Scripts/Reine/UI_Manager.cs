@@ -18,6 +18,8 @@ public class UI_Manager : PersistentSingleton<UI_Manager>
     [SerializeField] private TextMeshProUGUI[] _ammoCounter;
     [SerializeField] private TextMeshProUGUI _timer;
     [SerializeField] private TextMeshProUGUI _scoreCounter;
+    [SerializeField] private GameObject _timerScreen;
+    [SerializeField] private GameObject _scoreScreen;
 
     [Header("Post Gameplay")]
     [SerializeField] private GameObject _gameOverScreen;
@@ -47,6 +49,7 @@ public class UI_Manager : PersistentSingleton<UI_Manager>
 
         if (_gameStateManager.CurrentGameState == EGameState.Gameplay)
         {
+            ToggleGameplayScreen();
             HandleAmmoCounter();
             HandleScoreCounter();
             HandleTimer();
@@ -80,6 +83,12 @@ public class UI_Manager : PersistentSingleton<UI_Manager>
     private void TogglePreGameplayScreen()
     {
         _preGameplayScreen.SetActive(_gameStateManager.CurrentGameState == EGameState.PreGameplay);
+    }
+
+    private void ToggleGameplayScreen()
+    {
+        _timerScreen.SetActive(_gameStateManager.CurrentGameState == EGameState.Gameplay);
+        _scoreScreen.SetActive(_gameStateManager.CurrentGameState == EGameState.Gameplay);
     }
 
     private void ToggleGameOverScreen()
