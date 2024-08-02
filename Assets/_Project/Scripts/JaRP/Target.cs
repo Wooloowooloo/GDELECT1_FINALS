@@ -15,7 +15,7 @@ public class Target : MonoBehaviour, ITarget
     [SerializeField] private float _maxLifeTime;
     [SerializeField] private float _movementSpeed;
 
-    private AudioSource _audioSource;
+    private AudioManager _audioManager;
     private Animator _animator;
     private Collider _spawnArea;
     private Bounds _spawnBounds;
@@ -27,7 +27,7 @@ public class Target : MonoBehaviour, ITarget
 
     private void Awake()
     {
-        _audioSource = GetComponent<AudioSource>();
+        _audioManager = AudioManager.Instance;
         _animator = GetComponent<Animator>();
         _spawnArea = transform.root.GetComponent<Collider>();
         _spawnBounds = _spawnArea.bounds;
@@ -79,7 +79,7 @@ public class Target : MonoBehaviour, ITarget
         int typeDeterminant = Random.Range(0, 100);
         Transform spawnerLocation = GetComponentInParent<Transform>();
         TargetMoveType = typeDeterminant > 49 ? ETargetMoveType.Stationary : ETargetMoveType.Mobile;
-        //_audioSource.PlayOneShot(_targetConfig.SpawnAudio);
+        _audioManager.PlaySFX(ESFXType.SpawnerSpawn);
 
         if (TargetMoveType == ETargetMoveType.Stationary)
         {
@@ -120,7 +120,7 @@ public class Target : MonoBehaviour, ITarget
     {
         GameStateManager manager = FindFirstObjectByType<GameStateManager>();
         manager.UpdateScore(_targetConfig.BaseScoreValue);
-        //_audioSource.PlayOneShot(_targetConfig.DespawnAudio);
+        _audioManager.PlaySFX(ESFXType.TargetHit);
 
         if (_targetConfig.TargetShootType == ETargetShootType.DoShoot)
         {
@@ -142,7 +142,7 @@ public class Target : MonoBehaviour, ITarget
     {
         Collider collider = GetComponent<Collider>();
         collider.enabled = false;
-        //_audioSource.PlayOneShot(_targetConfig.DespawnAudio);
+        _audioManager.PlaySFX(ESFXType.SpawnerDespawn);
         _animator.Play(_rotateDespawnHash);
 
         yield return new WaitForSeconds(0.25f);

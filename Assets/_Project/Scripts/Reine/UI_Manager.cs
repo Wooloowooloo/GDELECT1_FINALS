@@ -74,7 +74,7 @@ public class UI_Manager : PersistentSingleton<UI_Manager>
 
     public void HandleHighScoreText()
     {
-        _highScoreText.text = $"{_gameStateManager.HighScore}";
+        _highScoreText.text = $"{PlayerPrefs.GetInt("High Score")}";
     }
 
     private void TogglePreGameplayScreen()
