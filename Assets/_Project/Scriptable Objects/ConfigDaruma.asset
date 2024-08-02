@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d376a1eb30140e41b82398a56457773, type: 3}
   m_Name: ConfigDaruma
   m_EditorClassIdentifier: 
-  _targetType: 0
-  _baseScoreValue: 10
+  _targetShootType: 0
+  _baseScoreValue: 15
