@@ -42,7 +42,7 @@ public class AudioManager : PersistentSingleton<AudioManager>
             _currentMusic = _nonGameplayMusic;
         }
 
-        _currentMusic.volume = 1f;
+        _currentMusic.volume = 0.5f;
         _currentMusic.Play();
     }
 
